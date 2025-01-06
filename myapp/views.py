@@ -38,9 +38,12 @@ class SignInView(View):
                 login(request,user_object)
                 print(request.user)
                 print("session started")
+                return redirect("index")
             else:
                 print("invalid credentials")
             return redirect("signin")
 
-
+class Indexview(View):
+    def get(self,request,*args,**kwargs):
+        return render(request,"index.html")
 
