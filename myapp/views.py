@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from django.views.generic import View
 from myapp.forms import SignUpForm,SignInForm
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
+
 class SignUpView(View):
 
     def get(self,request,*args,**kwargs):
@@ -47,3 +48,7 @@ class Indexview(View):
     def get(self,request,*args,**kwargs):
         return render(request,"index.html")
 
+class SignOutView(View):
+    def get(self,request,*args,**kwargs):
+        logout(request)
+        return redirect("signin")
